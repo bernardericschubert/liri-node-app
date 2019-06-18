@@ -40,7 +40,7 @@ function userInput(app, query) {
             movieThis();
             break;
         case "do-what-it-says":
-            doWhatItSays(query);
+            doWhatItSays();
             break;
         default:
             console.log("I'm not smart enough to know what this means!");
@@ -142,7 +142,7 @@ function movieThis() {
         });
 }
 
-function spotifyThisSong(query) {
+function spotifyThisSong() {
     // Handle case where no song is entered by user
     var song = "";
     if (query === "") {
@@ -177,7 +177,23 @@ function doWhatItSays() {
             console.log(error);
         } else {
             var dataArray = data.split(",");
-            spotifyThisSong(dataArray[1]);
+            var song = dataArray[1];
+            
+            spotify.search({ type: 'track', query: song, limit: 10 }, function(err, data) {
+                if (err) {
+                    return console.log('Error occurred: ' + err);
+                }
+        
+                for (i = 0; i < data.tracks.items.length; i++) {
+                    console.log("");
+                    console.log('Artist(s): ' + data.tracks.items[i].artists[0].name);
+                    console.log('Song Title: ' + data.tracks.items[i].name);
+                    console.log('Preview Link: ' + data.tracks.items[i].preview_url);
+                    console.log('Album: ' + data.tracks.items[i].album.name);
+                    console.log("");
+                }
+        
+            });
         }
     });
 }
