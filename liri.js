@@ -171,7 +171,8 @@ function spotifyThisSong() {
 
 function doWhatItSays() {
     // Keeping this super simple in the interest of time. If expanded to the other functions, I would write If statements to evaluate whether the line in 
-    // question was Spotify, Movie, or Bands In Town related data (based on 0 position in the array post split) then throw that value to the appropriate function
+    // question was Spotify, Movie, or Bands In Town related data (based on 0 position in the array post split) then throw that value to the appropriate function.
+    // I had trouble with the Spotify function getting confused with no argument so just basically hard-coded it again here.  Not efficient, not elegant.  But works.
     fs.readFile("random.txt", "utf8", function(error, data) {
         if (error) {
             console.log(error);
