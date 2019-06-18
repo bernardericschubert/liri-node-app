@@ -36,15 +36,15 @@ do-what-it-says | Utilizes the Fs NPM package to parse a text file and run the a
 
      *Command Line: npm install dotenv*
 
-2. **Axios:** - Axios allows for simple API request and response
+2. **Axios:** Axios allows for simple API request and response
 
      *Command Line: npm install axios*
 
-3. **Moment:** - A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates. 
+3. **Moment:** A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates. 
 
     *Command Line: npm install moment*
 
-4. **node-spotify-api:** - A simple to use library for the Spotify REST API
+4. **node-spotify-api:** A simple to use library for the Spotify REST API
 
     *Command Line: npm install node-spotify-api*
 
