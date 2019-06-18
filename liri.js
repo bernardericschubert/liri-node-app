@@ -15,7 +15,7 @@ var app = process.argv[2];
 // Handle multiword query
 var query = process.argv.slice(3).join(" ");
 
-// Create OMDB and Spotify appropriate query value
+// Create OMDB appropriate query value
 var multiName = "";
 
 // Loop through all the words in the node argument
@@ -60,7 +60,7 @@ function concertThis() {
     // Use Axios to query the Bands In Town API
     axios.get("https://rest.bandsintown.com/artists/" + query + "/events?app_id=codingbootcamp").then(
         function(response) {
-            //console.log(response.data);
+
             for (i = 0; i < response.data.length; i++) {
                 console.log("Venue: " + response.data[i].venue.name);
                 if (response.data[i].venue.region === "") {
@@ -141,4 +141,31 @@ function movieThis() {
             }
             console.log(error.config);
         });
+}
+
+function spotifyThisSong() {
+    // Handle case where no song is entered by user
+    var song = "";
+    if (query === "") {
+        song = 'The Sign Ace Of Base';
+    }
+    else {
+        song = query;
+    }
+
+    spotify.search({ type: 'track', query: song }, function(err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+
+        for (i = 0; i < data.tracks.items.length; i++) {
+            console.log("");
+            console.log('Artist(s): ' + data.tracks.items[i].artists[0].name);
+            console.log('Song Title: ' + data.tracks.items[i].name);
+            console.log('Preview Link: ' + data.tracks.items[i].preview_url);
+            console.log('Album: ' + data.tracks.items[i].album.name);
+            console.log("");
+        }
+
+    });
 }
