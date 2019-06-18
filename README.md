@@ -34,8 +34,7 @@ do-what-it-says | Utilizes the Fs NPM package to parse a text file and run the a
 **To get started, you'll need to ensure the following packages are installed:**
 1. **Dotenv:** Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env. Storing configuration in the environment separate from code is more secure
 
-     *Command Line: 'npm install dotenv'*
-
+     *Command Line: npm install dotenv*
 
 2. **Axios:** - Axios allows for simple API request and response
 
@@ -67,7 +66,7 @@ Read more about these packages [here](https://www.npmjs.com/)
 
     *Command Line: node liri.js spotify-this-song [song name]*
 
-    If not song name is provided, a default is returned.  See image below.
+    If no song name is provided, a default is returned.  See image below.
 
     <img src="images/code-spotify.png">
 
