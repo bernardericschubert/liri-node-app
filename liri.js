@@ -6,7 +6,6 @@ var spotify = new Spotify(keys.spotify);
 var axios = require("axios");
 var fs = require("fs");
 var moment = require("moment");
-//var dotenv = require("dotenv");
 
 // Argv the desired application
 var argv = process.argv;
@@ -143,7 +142,7 @@ function movieThis() {
         });
 }
 
-function spotifyThisSong() {
+function spotifyThisSong(query) {
     // Handle case where no song is entered by user
     var song = "";
     if (query === "") {
@@ -153,7 +152,7 @@ function spotifyThisSong() {
         song = query;
     }
 
-    spotify.search({ type: 'track', query: song }, function(err, data) {
+    spotify.search({ type: 'track', query: song, limit: 10 }, function(err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
@@ -167,5 +166,18 @@ function spotifyThisSong() {
             console.log("");
         }
 
+    });
+}
+
+function doWhatItSays() {
+    // Keeping this super simple in the interest of time. If expanded to the other functions, I would write If statements to evaluate whether the line in 
+    // question was Spotify, Movie, or Bands In Town related data (based on 0 position in the array post split) then throw that value to the appropriate function
+    fs.readFile("random.txt", "utf8", function(error, data) {
+        if (error) {
+            console.log(error);
+        } else {
+            var dataArray = data.split(",");
+            spotifyThisSong(dataArray[1]);
+        }
     });
 }
