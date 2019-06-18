@@ -97,8 +97,18 @@ function concertThis() {
 }
 
 function movieThis() {
+    // Handle case where no movie is entered by user
+    var url = "";
+    var defaultMovie = "Mr+Nobody";
+    if (query === "") {
+        url = "http://www.omdbapi.com/?t=" + defaultMovie + "&y=&plot=short&apikey=trilogy";
+    }
+    else {
+        url = "http://www.omdbapi.com/?t=" + multiName + "&y=&plot=short&apikey=trilogy";
+    }
+
     // Run a request with axios to the OMDB API with the movie specified using the multiName variable
-    axios.get("http://www.omdbapi.com/?t=" + multiName + "&y=&plot=short&apikey=trilogy").then(
+    axios.get(url).then(
         function(response) { 
             console.log("");
             console.log("Title: " + response.data.Title);
